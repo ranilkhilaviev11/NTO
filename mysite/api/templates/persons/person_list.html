@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Persons</h1>
+<table border="1">
+<thead>
+    <tr>
+     <th>FirstName</th>
+      <th>MiddleName</th>
+      <th>LastName</th>
+      <th>Phone</th>
+      <th>Birthday</th>
+      <th>Position</th>
+        <th>Country</th>
+    </tr>
+</thead>
+<tbody>
+    {% for person in persons %}
+    <tr>
+        <td>{{person.FirstName}}</td>
+        <td>{{person.MiddleName}}</td>
+        <td>{{person.LastName}}</td>
+        <td>{{person.Phone}}</td>
+        <td>{{person.Birthday}}</td>
+        <td>{{person.Position.Name}}</td>
+        <td>{{ person.Country }}</td>
+        <td><a href="{% url 'person_view' person.id %}">view</a></td>
+        <td><a href="{% url 'person_edit' person.id %}">edit</a></td>
+        <td><a href="{% url 'person_delete' person.id %}">delete</a></td>
+    </tr>
+
+    {% endfor %}
+
+</tbody>
+</table>
+
+<a href="{% url 'person_new' %}">New</a>
+</body>
+</html>
